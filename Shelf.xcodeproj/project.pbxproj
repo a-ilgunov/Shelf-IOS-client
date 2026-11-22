@@ -1,6 +1,8 @@
 // !$*UTF8*$!
 {
 archiveVersion = 1; classes = {}; objectVersion = 56; objects = {
+2CBB6AE640AA492AB309212C = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profiles/ProfileService.swift"; sourceTree = "<group>"; };
+717DD795C6974499A95D0A27 = { isa = PBXBuildFile; fileRef = 2CBB6AE640AA492AB309212C; };
 FC6750D3FC1D4F384EA315BE = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/MailView.swift"; sourceTree = "<group>"; };
 9BC68B012ABAB8B607F36C30 = { isa = PBXBuildFile; fileRef = FC6750D3FC1D4F384EA315BE; };
 61C81C0AF9B51B20515138E9 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/HelpView.swift"; sourceTree = "<group>"; };
@@ -18,7 +20,7 @@ F32ED14DE5D690E6F1F22B8A = { isa = PBXBuildFile; fileRef = 81F94DDB4D0E7B61DF9A8
 28AAD1477D5182D66D4B03B3 = { isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets.xcassets"; sourceTree = "<group>"; };
 EBAAC2BCA023110D976A4EBE = { isa = PBXBuildFile; fileRef = 28AAD1477D5182D66D4B03B3; };
 7B594B6DB375E1BF3F23CDD6 = { isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info.plist"; sourceTree = "<group>"; };
-2B860F2D0195E0B3104F46F8 = { isa = PBXGroup; children = (05867030490DF93BE27408C8, A70A6D4B34476CDC8A86416E, FC6750D3FC1D4F384EA315BE, 61C81C0AF9B51B20515138E9, 0CC7F54F5F1E40EECA1B9CC1, 38524857BBD28A64A042C959, 81F94DDB4D0E7B61DF9A8486, 28AAD1477D5182D66D4B03B3, 7B594B6DB375E1BF3F23CDD6, ); path = "Shelf"; sourceTree = "<group>"; };
+2B860F2D0195E0B3104F46F8 = { isa = PBXGroup; children = (05867030490DF93BE27408C8, A70A6D4B34476CDC8A86416E, FC6750D3FC1D4F384EA315BE, 61C81C0AF9B51B20515138E9, 0CC7F54F5F1E40EECA1B9CC1, 2CBB6AE640AA492AB309212C, 38524857BBD28A64A042C959, 81F94DDB4D0E7B61DF9A8486, 28AAD1477D5182D66D4B03B3, 7B594B6DB375E1BF3F23CDD6, ); path = "Shelf"; sourceTree = "<group>"; };
 B0DD81B48BD380984BB0C2F4 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShelfFlowTests.swift"; sourceTree = "<group>"; };
 9EEDB34DB740EB735958A0C8 = { isa = PBXBuildFile; fileRef = B0DD81B48BD380984BB0C2F4; };
 81870B36DB43E83DC5878973 = { isa = PBXGroup; children = (B0DD81B48BD380984BB0C2F4, ); path = "ShelfUITests"; sourceTree = "<group>"; };
@@ -26,7 +28,7 @@ B0DD81B48BD380984BB0C2F4 = { isa = PBXFileReference; lastKnownFileType = sourcec
 EACC0E0FFAB4969DF0C91974 = { isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ShelfUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 FE0A091FDBFB3E9C31B7A1BD = { isa = PBXGroup; children = (5BE8C3A655B1BAD4653988EB, EACC0E0FFAB4969DF0C91974, ); sourceTree = "<group>"; name = Products; };
 DC76E9F0C0006E8F919E0C51 = { isa = PBXGroup; children = (2B860F2D0195E0B3104F46F8, 81870B36DB43E83DC5878973, FE0A091FDBFB3E9C31B7A1BD, ); sourceTree = "<group>"; };
-A0A84986764FF5900CD3F5D6 = { isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (46D4F07DFB1E8B97A09552EE, 068B33F90A76324FF386258F, 9BC68B012ABAB8B607F36C30, 0DC9B0FD25187DA4D7427F74, 7C47A19FA1E924CBEE77A569, A6D572AAC617B48FE3F99178, F32ED14DE5D690E6F1F22B8A, ); runOnlyForDeploymentPostprocessing = 0; };
+A0A84986764FF5900CD3F5D6 = { isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (46D4F07DFB1E8B97A09552EE, 068B33F90A76324FF386258F, 9BC68B012ABAB8B607F36C30, 0DC9B0FD25187DA4D7427F74, 7C47A19FA1E924CBEE77A569, 717DD795C6974499A95D0A27, A6D572AAC617B48FE3F99178, F32ED14DE5D690E6F1F22B8A, ); runOnlyForDeploymentPostprocessing = 0; };
 DDB4622C4BB3AA7C18BC907A = { isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 E4DBDE04A0D5C5E88F1A6BBF = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (EBAAC2BCA023110D976A4EBE, ); runOnlyForDeploymentPostprocessing = 0; };
 1BF5EAA62F3641BD99BCBF9F = { isa = PBXNativeTarget; buildConfigurationList = 6068F032FF22A279217D11E0; buildPhases = (A0A84986764FF5900CD3F5D6, DDB4622C4BB3AA7C18BC907A, E4DBDE04A0D5C5E88F1A6BBF, ); buildRules = (); dependencies = (); name = Shelf; productName = Shelf; productReference = 5BE8C3A655B1BAD4653988EB; productType = "com.apple.product-type.application"; };
