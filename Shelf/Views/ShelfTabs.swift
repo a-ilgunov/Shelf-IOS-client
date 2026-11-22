@@ -152,10 +152,7 @@ private struct AccountPage: View {
         Group {
             switch page {
             case .login, .register: AuthView(registering: page == .register, flow: flow)
-            case .recover: Text("Восстановление доступа")
-            case .changePassword: Text("Изменение пароля")
-            case .resend: Text("Подтверждение почты")
-            case .faq: Text("FAQ")
+            case .recover, .changePassword, .resend, .faq: HelpView(page: page, flow: flow, fromFAQ: fromFAQ)
             case .mailSent: Text("Проверьте почту")
             case .sendError: Text("Попробуйте позже")
             case .verified: Text("Электронная почта подтверждена!")
