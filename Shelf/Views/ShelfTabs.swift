@@ -24,7 +24,11 @@ enum ShelfTab: String, CaseIterable {
 }
 
 struct ShelfTabs: View {
-    @StateObject private var flow = ProfileFlow()
+    @StateObject private var flow: ProfileFlow
+
+    init(profiles: any ProfileService) {
+        _flow = StateObject(wrappedValue: ProfileFlow(profiles: profiles))
+    }
 
     var body: some View {
         ShelfTabController(flow: flow)
@@ -75,6 +79,12 @@ enum AuthPage: Equatable {
 final class ProfileFlow: NSObject, ObservableObject, UIGestureRecognizerDelegate {
     private weak var navigation: UINavigationController?
     private var pendingLink: AuthPage?
+    let profiles: any ProfileService
+
+    init(profiles: any ProfileService) {
+        self.profiles = profiles
+        super.init()
+    }
 
     func attach(_ nav: UINavigationController) {
         navigation = nav
