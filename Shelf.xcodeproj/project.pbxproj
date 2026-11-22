@@ -19,7 +19,9 @@ F32ED14DE5D690E6F1F22B8A = { isa = PBXBuildFile; fileRef = 81F94DDB4D0E7B61DF9A8
 EBAAC2BCA023110D976A4EBE = { isa = PBXBuildFile; fileRef = 28AAD1477D5182D66D4B03B3; };
 7B594B6DB375E1BF3F23CDD6 = { isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info.plist"; sourceTree = "<group>"; };
 2B860F2D0195E0B3104F46F8 = { isa = PBXGroup; children = (05867030490DF93BE27408C8, A70A6D4B34476CDC8A86416E, FC6750D3FC1D4F384EA315BE, 61C81C0AF9B51B20515138E9, 0CC7F54F5F1E40EECA1B9CC1, 38524857BBD28A64A042C959, 81F94DDB4D0E7B61DF9A8486, 28AAD1477D5182D66D4B03B3, 7B594B6DB375E1BF3F23CDD6, ); path = "Shelf"; sourceTree = "<group>"; };
-81870B36DB43E83DC5878973 = { isa = PBXGroup; children = (); path = "ShelfUITests"; sourceTree = "<group>"; };
+B0DD81B48BD380984BB0C2F4 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShelfFlowTests.swift"; sourceTree = "<group>"; };
+9EEDB34DB740EB735958A0C8 = { isa = PBXBuildFile; fileRef = B0DD81B48BD380984BB0C2F4; };
+81870B36DB43E83DC5878973 = { isa = PBXGroup; children = (B0DD81B48BD380984BB0C2F4, ); path = "ShelfUITests"; sourceTree = "<group>"; };
 5BE8C3A655B1BAD4653988EB = { isa = PBXFileReference; explicitFileType = wrapper.application; path = Shelf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 EACC0E0FFAB4969DF0C91974 = { isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ShelfUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 FE0A091FDBFB3E9C31B7A1BD = { isa = PBXGroup; children = (5BE8C3A655B1BAD4653988EB, EACC0E0FFAB4969DF0C91974, ); sourceTree = "<group>"; name = Products; };
@@ -28,7 +30,7 @@ A0A84986764FF5900CD3F5D6 = { isa = PBXSourcesBuildPhase; buildActionMask = 21474
 DDB4622C4BB3AA7C18BC907A = { isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 E4DBDE04A0D5C5E88F1A6BBF = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (EBAAC2BCA023110D976A4EBE, ); runOnlyForDeploymentPostprocessing = 0; };
 1BF5EAA62F3641BD99BCBF9F = { isa = PBXNativeTarget; buildConfigurationList = 6068F032FF22A279217D11E0; buildPhases = (A0A84986764FF5900CD3F5D6, DDB4622C4BB3AA7C18BC907A, E4DBDE04A0D5C5E88F1A6BBF, ); buildRules = (); dependencies = (); name = Shelf; productName = Shelf; productReference = 5BE8C3A655B1BAD4653988EB; productType = "com.apple.product-type.application"; };
-7933AAFAA515DC7955DDB291 = { isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+7933AAFAA515DC7955DDB291 = { isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (9EEDB34DB740EB735958A0C8, ); runOnlyForDeploymentPostprocessing = 0; };
 F993F02B9F41195C7B6D8DA5 = { isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 69DFE3F33058A270EF8F1B4F = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 0AE9DE60202FD76E596337CB = { isa = PBXNativeTarget; buildConfigurationList = 0D4FF3C23CDECA81B2D7537C; buildPhases = (7933AAFAA515DC7955DDB291, F993F02B9F41195C7B6D8DA5, 69DFE3F33058A270EF8F1B4F, ); buildRules = (); dependencies = (E9FAD0C6CD43534327C0AF90, ); name = ShelfUITests; productName = ShelfUITests; productReference = EACC0E0FFAB4969DF0C91974; productType = "com.apple.product-type.bundle.ui-testing"; };
