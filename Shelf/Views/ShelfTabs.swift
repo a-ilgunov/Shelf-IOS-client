@@ -160,7 +160,7 @@ private struct AccountPage: View {
             case .sendError: Text("Попробуйте позже")
             case .verified: Text("Электронная почта подтверждена!")
             case .expired: Text("Не удалось подтвердить почту.")
-            case .profile: Text("Мой профиль")
+            case .profile: ProfileView(onLogout: flow.login)
             }
         }
         .foregroundStyle(Palette.ink)
