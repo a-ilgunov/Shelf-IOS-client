@@ -153,10 +153,7 @@ private struct AccountPage: View {
             switch page {
             case .login, .register: AuthView(registering: page == .register, flow: flow)
             case .recover, .changePassword, .resend, .faq: HelpView(page: page, flow: flow, fromFAQ: fromFAQ)
-            case .mailSent: Text("Проверьте почту")
-            case .sendError: Text("Попробуйте позже")
-            case .verified: Text("Электронная почта подтверждена!")
-            case .expired: Text("Не удалось подтвердить почту.")
+            case .mailSent, .sendError, .verified, .expired: MailView(page: page, flow: flow)
             case .profile: ProfileView(onLogout: flow.login)
             }
         }
