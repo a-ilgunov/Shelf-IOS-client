@@ -3,6 +3,8 @@
 archiveVersion = 1; classes = {}; objectVersion = 56; objects = {
 05867030490DF93BE27408C8 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShelfApp.swift"; sourceTree = "<group>"; };
 46D4F07DFB1E8B97A09552EE = { isa = PBXBuildFile; fileRef = 05867030490DF93BE27408C8; };
+A70A6D4B34476CDC8A86416E = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/AuthView.swift"; sourceTree = "<group>"; };
+068B33F90A76324FF386258F = { isa = PBXBuildFile; fileRef = A70A6D4B34476CDC8A86416E; };
 38524857BBD28A64A042C959 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/ShelfTabs.swift"; sourceTree = "<group>"; };
 A6D572AAC617B48FE3F99178 = { isa = PBXBuildFile; fileRef = 38524857BBD28A64A042C959; };
 81F94DDB4D0E7B61DF9A8486 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Views/Style.swift"; sourceTree = "<group>"; };
@@ -10,13 +12,13 @@ F32ED14DE5D690E6F1F22B8A = { isa = PBXBuildFile; fileRef = 81F94DDB4D0E7B61DF9A8
 28AAD1477D5182D66D4B03B3 = { isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets.xcassets"; sourceTree = "<group>"; };
 EBAAC2BCA023110D976A4EBE = { isa = PBXBuildFile; fileRef = 28AAD1477D5182D66D4B03B3; };
 7B594B6DB375E1BF3F23CDD6 = { isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info.plist"; sourceTree = "<group>"; };
-2B860F2D0195E0B3104F46F8 = { isa = PBXGroup; children = (05867030490DF93BE27408C8, 38524857BBD28A64A042C959, 81F94DDB4D0E7B61DF9A8486, 28AAD1477D5182D66D4B03B3, 7B594B6DB375E1BF3F23CDD6, ); path = "Shelf"; sourceTree = "<group>"; };
+2B860F2D0195E0B3104F46F8 = { isa = PBXGroup; children = (05867030490DF93BE27408C8, A70A6D4B34476CDC8A86416E, 38524857BBD28A64A042C959, 81F94DDB4D0E7B61DF9A8486, 28AAD1477D5182D66D4B03B3, 7B594B6DB375E1BF3F23CDD6, ); path = "Shelf"; sourceTree = "<group>"; };
 81870B36DB43E83DC5878973 = { isa = PBXGroup; children = (); path = "ShelfUITests"; sourceTree = "<group>"; };
 5BE8C3A655B1BAD4653988EB = { isa = PBXFileReference; explicitFileType = wrapper.application; path = Shelf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 EACC0E0FFAB4969DF0C91974 = { isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ShelfUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 FE0A091FDBFB3E9C31B7A1BD = { isa = PBXGroup; children = (5BE8C3A655B1BAD4653988EB, EACC0E0FFAB4969DF0C91974, ); sourceTree = "<group>"; name = Products; };
 DC76E9F0C0006E8F919E0C51 = { isa = PBXGroup; children = (2B860F2D0195E0B3104F46F8, 81870B36DB43E83DC5878973, FE0A091FDBFB3E9C31B7A1BD, ); sourceTree = "<group>"; };
-A0A84986764FF5900CD3F5D6 = { isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (46D4F07DFB1E8B97A09552EE, A6D572AAC617B48FE3F99178, F32ED14DE5D690E6F1F22B8A, ); runOnlyForDeploymentPostprocessing = 0; };
+A0A84986764FF5900CD3F5D6 = { isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (46D4F07DFB1E8B97A09552EE, 068B33F90A76324FF386258F, A6D572AAC617B48FE3F99178, F32ED14DE5D690E6F1F22B8A, ); runOnlyForDeploymentPostprocessing = 0; };
 DDB4622C4BB3AA7C18BC907A = { isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
 E4DBDE04A0D5C5E88F1A6BBF = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (EBAAC2BCA023110D976A4EBE, ); runOnlyForDeploymentPostprocessing = 0; };
 1BF5EAA62F3641BD99BCBF9F = { isa = PBXNativeTarget; buildConfigurationList = 6068F032FF22A279217D11E0; buildPhases = (A0A84986764FF5900CD3F5D6, DDB4622C4BB3AA7C18BC907A, E4DBDE04A0D5C5E88F1A6BBF, ); buildRules = (); dependencies = (); name = Shelf; productName = Shelf; productReference = 5BE8C3A655B1BAD4653988EB; productType = "com.apple.product-type.application"; };

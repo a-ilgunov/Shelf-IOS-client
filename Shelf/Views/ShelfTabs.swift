@@ -24,24 +24,37 @@ enum ShelfTab: String, CaseIterable {
 }
 
 struct ShelfTabs: View {
+    @StateObject private var flow = ProfileFlow()
+
     var body: some View {
-        ShelfTabController()
+        ShelfTabController(flow: flow)
             .ignoresSafeArea(.container)
+            .onOpenURL { flow.openMailLink($0) }
     }
 }
 
 private struct ShelfTabController: UIViewControllerRepresentable {
+    let flow: ProfileFlow
+
     func makeUIViewController(context: Context) -> UITabBarController {
         let tabs = UITabBarController()
         tabs.overrideUserInterfaceStyle = .light
         tabs.view.tintColor = UIColor(Palette.accent)
         tabs.viewControllers = ShelfTab.allCases.map { tab in
-            let placeholder = Text(tab.placeholder)
-                .font(.system(size: 20, weight: .semibold))
-                .foregroundStyle(Palette.ink)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Palette.paper.ignoresSafeArea())
-            let controller = UIHostingController(rootView: placeholder)
+            let controller: UIViewController
+            if tab == .profile {
+                let nav = UINavigationController()
+                nav.view.backgroundColor = UIColor(Palette.paper)
+                flow.attach(nav)
+                controller = nav
+            } else {
+                let placeholder = Text(tab.placeholder)
+                    .font(.system(size: 20, weight: .semibold))
+                    .foregroundStyle(Palette.ink)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Palette.paper.ignoresSafeArea())
+                controller = UIHostingController(rootView: placeholder)
+            }
             let item = UITabBarItem(title: tab.rawValue, image: UIImage(named: tab.icon)?.withRenderingMode(.alwaysTemplate), tag: 0)
             item.accessibilityIdentifier = "tab." + tab.icon
             controller.tabBarItem = item
@@ -52,4 +65,106 @@ private struct ShelfTabController: UIViewControllerRepresentable {
     }
 
     func updateUIViewController(_ controller: UITabBarController, context: Context) {}
+}
+
+enum AuthPage: Equatable {
+    case login, register, recover, changePassword, faq, resend, mailSent, sendError, verified, expired, profile
+}
+
+@MainActor
+final class ProfileFlow: NSObject, ObservableObject, UIGestureRecognizerDelegate {
+    private weak var navigation: UINavigationController?
+    private var pendingLink: AuthPage?
+
+    func attach(_ nav: UINavigationController) {
+        navigation = nav
+        nav.setNavigationBarHidden(true, animated: false)
+        nav.setViewControllers([controller(.login)], animated: false)
+        nav.interactivePopGestureRecognizer?.delegate = self
+        if let pendingLink {
+            self.pendingLink = nil
+            show(pendingLink, animated: false)
+        }
+    }
+
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        guard let navigation else { return false }
+        return navigation.viewControllers.count > 1 && navigation.transitionCoordinator == nil
+    }
+
+    func show(_ page: AuthPage, animated: Bool = true) {
+        navigation?.view.endEditing(true)
+        navigation?.pushViewController(controller(page), animated: animated)
+    }
+
+    func back() { navigation?.popViewController(animated: true) }
+
+    func login() {
+        guard let navigation else { return }
+        if navigation.viewControllers.first?.restorationIdentifier == String(describing: AuthPage.login) {
+            navigation.popToRootViewController(animated: true)
+        } else {
+            navigation.setViewControllers([controller(.login)], animated: true)
+        }
+    }
+
+    func signIn() {
+        navigation?.view.endEditing(true)
+        navigation?.setViewControllers([controller(.profile)], animated: true)
+    }
+
+    func sendMail(to address: String, recovery: Bool = false) {
+        let email = address.trimmingCharacters(in: .whitespacesAndNewlines)
+        let valid = email.isEmpty || email.range(of: #"^[^@\s]+@[^@\s]+\.[^@\s]+$"#, options: .regularExpression) != nil
+        show(valid ? (recovery ? .changePassword : .mailSent) : .sendError)
+    }
+
+    func openMailLink(_ url: URL) {
+        guard url.scheme == "shelf", url.host == "mail" else { return }
+        let page: AuthPage
+        switch url.path {
+        case "/verified": page = .verified
+        case "/expired": page = .expired
+        case "/reset": page = .changePassword
+        default: return
+        }
+        if let navigation { navigation.tabBarController?.selectedViewController = navigation }
+        if navigation == nil { pendingLink = page } else { show(page) }
+    }
+
+    private func controller(_ page: AuthPage) -> UIViewController {
+        let host = UIHostingController(rootView: AccountPage(page: page, flow: self,
+            fromFAQ: navigation?.topViewController?.restorationIdentifier == String(describing: AuthPage.faq)))
+        host.hidesBottomBarWhenPushed = ![.login, .register, .profile].contains(page)
+        host.view.backgroundColor = UIColor(Palette.paper)
+        host.overrideUserInterfaceStyle = .light
+        host.restorationIdentifier = String(describing: page)
+        return host
+    }
+}
+
+private struct AccountPage: View {
+    let page: AuthPage
+    let flow: ProfileFlow
+    let fromFAQ: Bool
+
+    var body: some View {
+        Group {
+            switch page {
+            case .login, .register: AuthView(registering: page == .register, flow: flow)
+            case .recover: Text("Восстановление доступа")
+            case .changePassword: Text("Изменение пароля")
+            case .resend: Text("Подтверждение почты")
+            case .faq: Text("FAQ")
+            case .mailSent: Text("Проверьте почту")
+            case .sendError: Text("Попробуйте позже")
+            case .verified: Text("Электронная почта подтверждена!")
+            case .expired: Text("Не удалось подтвердить почту.")
+            case .profile: Text("Мой профиль")
+            }
+        }
+        .foregroundStyle(Palette.ink)
+        .tint(Palette.accent)
+        .background(Palette.paper.ignoresSafeArea())
+    }
 }
