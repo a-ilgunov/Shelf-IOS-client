@@ -26,7 +26,12 @@ struct ProfileView<Actions: View>: View {
                 VStack(alignment: .leading, spacing: 0) {
                     header
                     actions()
-                    sectionHeading("Друзья", count: profile.friends.total)
+                    Button {
+                        flow.show(.friends(userID: profile.id, isOwner: isOwner))
+                    } label: {
+                        sectionHeading("Друзья", count: profile.friends.total)
+                            .contentShape(Rectangle())
+                    }.buttonStyle(.plain)
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible(), alignment: .topLeading), count: 5),
                               alignment: .leading, spacing: 8) {
                         ForEach(Array(profile.friends.preview.enumerated()), id: \.element.id) { index, friend in
