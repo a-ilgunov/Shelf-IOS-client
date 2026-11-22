@@ -76,6 +76,7 @@ enum AuthPage: Equatable {
     case guestProfile(id: String)
     case friends(userID: String, isOwner: Bool)
     case communities(userID: String, isOwner: Bool)
+    case collections(userID: String, isOwner: Bool)
 }
 
 @MainActor
@@ -165,7 +166,7 @@ final class ProfileFlow: NSObject, ObservableObject, UIGestureRecognizerDelegate
         let host = UIHostingController(rootView: AccountPage(page: page, flow: self,
             fromFAQ: navigation?.topViewController?.restorationIdentifier == String(describing: AuthPage.faq)))
         switch page {
-        case .login, .register, .profile, .guestProfile, .friends, .communities: host.hidesBottomBarWhenPushed = false
+        case .login, .register, .profile, .guestProfile, .friends, .communities, .collections: host.hidesBottomBarWhenPushed = false
         default: host.hidesBottomBarWhenPushed = true
         }
         host.view.backgroundColor = UIColor(Palette.paper)
@@ -188,6 +189,7 @@ private struct AccountPage: View {
             case .mailSent, .sendError, .verified, .expired: MailView(page: page, flow: flow)
             case .profile: ProfilePage(flow: flow)
             case .friends(let id, let isOwner): FriendsView(userID: id, isOwner: isOwner, flow: flow)
+            case .collections(let id, let isOwner): CollectionsView(userID: id, isOwner: isOwner, flow: flow)
             case .communities(let id, let isOwner): CommunitiesView(userID: id, isOwner: isOwner, flow: flow)
             case .guestProfile(let id): ProfilePage(userID: id, flow: flow)
             }

@@ -63,7 +63,12 @@ struct ProfileView<Actions: View>: View {
                         }
                     }
                     divider
-                    sectionHeading("Коллекции", count: profile.collections.total)
+                    Button {
+                        flow.show(.collections(userID: profile.id, isOwner: isOwner))
+                    } label: {
+                        sectionHeading("Коллекции", count: profile.collections.total)
+                            .contentShape(Rectangle())
+                    }.buttonStyle(.plain)
                     HStack(alignment: .top, spacing: 12) {
                         ForEach(profile.collections.preview) { collection in
                             collectionCard(collection)
