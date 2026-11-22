@@ -1,0 +1,102 @@
+// !$*UTF8*$!
+{
+archiveVersion = 1; classes = {}; objectVersion = 56; objects = {
+05867030490DF93BE27408C8 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShelfApp.swift"; sourceTree = "<group>"; };
+46D4F07DFB1E8B97A09552EE = { isa = PBXBuildFile; fileRef = 05867030490DF93BE27408C8; };
+28AAD1477D5182D66D4B03B3 = { isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Assets.xcassets"; sourceTree = "<group>"; };
+EBAAC2BCA023110D976A4EBE = { isa = PBXBuildFile; fileRef = 28AAD1477D5182D66D4B03B3; };
+7B594B6DB375E1BF3F23CDD6 = { isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info.plist"; sourceTree = "<group>"; };
+2B860F2D0195E0B3104F46F8 = { isa = PBXGroup; children = (05867030490DF93BE27408C8, 28AAD1477D5182D66D4B03B3, 7B594B6DB375E1BF3F23CDD6, ); path = "Shelf"; sourceTree = "<group>"; };
+81870B36DB43E83DC5878973 = { isa = PBXGroup; children = (); path = "ShelfUITests"; sourceTree = "<group>"; };
+5BE8C3A655B1BAD4653988EB = { isa = PBXFileReference; explicitFileType = wrapper.application; path = Shelf.app; sourceTree = BUILT_PRODUCTS_DIR; };
+EACC0E0FFAB4969DF0C91974 = { isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ShelfUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+FE0A091FDBFB3E9C31B7A1BD = { isa = PBXGroup; children = (5BE8C3A655B1BAD4653988EB, EACC0E0FFAB4969DF0C91974, ); sourceTree = "<group>"; name = Products; };
+DC76E9F0C0006E8F919E0C51 = { isa = PBXGroup; children = (2B860F2D0195E0B3104F46F8, 81870B36DB43E83DC5878973, FE0A091FDBFB3E9C31B7A1BD, ); sourceTree = "<group>"; };
+A0A84986764FF5900CD3F5D6 = { isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (46D4F07DFB1E8B97A09552EE, ); runOnlyForDeploymentPostprocessing = 0; };
+DDB4622C4BB3AA7C18BC907A = { isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+E4DBDE04A0D5C5E88F1A6BBF = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (EBAAC2BCA023110D976A4EBE, ); runOnlyForDeploymentPostprocessing = 0; };
+1BF5EAA62F3641BD99BCBF9F = { isa = PBXNativeTarget; buildConfigurationList = 6068F032FF22A279217D11E0; buildPhases = (A0A84986764FF5900CD3F5D6, DDB4622C4BB3AA7C18BC907A, E4DBDE04A0D5C5E88F1A6BBF, ); buildRules = (); dependencies = (); name = Shelf; productName = Shelf; productReference = 5BE8C3A655B1BAD4653988EB; productType = "com.apple.product-type.application"; };
+7933AAFAA515DC7955DDB291 = { isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+F993F02B9F41195C7B6D8DA5 = { isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+69DFE3F33058A270EF8F1B4F = { isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+0AE9DE60202FD76E596337CB = { isa = PBXNativeTarget; buildConfigurationList = 0D4FF3C23CDECA81B2D7537C; buildPhases = (7933AAFAA515DC7955DDB291, F993F02B9F41195C7B6D8DA5, 69DFE3F33058A270EF8F1B4F, ); buildRules = (); dependencies = (E9FAD0C6CD43534327C0AF90, ); name = ShelfUITests; productName = ShelfUITests; productReference = EACC0E0FFAB4969DF0C91974; productType = "com.apple.product-type.bundle.ui-testing"; };
+D799BAE6088A90139B415FCC = { isa = PBXContainerItemProxy; containerPortal = 98F54143AB4E86B28C3AFEE0; proxyType = 1; remoteGlobalIDString = 1BF5EAA62F3641BD99BCBF9F; remoteInfo = Shelf; };
+E9FAD0C6CD43534327C0AF90 = { isa = PBXTargetDependency; target = 1BF5EAA62F3641BD99BCBF9F; targetProxy = D799BAE6088A90139B415FCC; };
+89E1FD6268CC0F221A2BE178 = { isa = XCBuildConfiguration; buildSettings = {
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG";
+SDKROOT = "iphoneos";
+IPHONEOS_DEPLOYMENT_TARGET = "17.0";
+SWIFT_VERSION = "5.0";
+CLANG_ENABLE_MODULES = "YES";
+SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+DEBUG_INFORMATION_FORMAT = "dwarf";
+ENABLE_TESTABILITY = "YES";
+}; name = Debug; };
+E6DE6C99132752C914FEF632 = { isa = XCBuildConfiguration; buildSettings = {
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
+SDKROOT = "iphoneos";
+IPHONEOS_DEPLOYMENT_TARGET = "17.0";
+SWIFT_VERSION = "5.0";
+CLANG_ENABLE_MODULES = "YES";
+SWIFT_OPTIMIZATION_LEVEL = "-O";
+DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+ENABLE_TESTABILITY = "NO";
+}; name = Release; };
+49EA05A46B1A86EA7E413B43 = { isa = XCConfigurationList; buildConfigurations = (89E1FD6268CC0F221A2BE178, E6DE6C99132752C914FEF632, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+9D0179852D9FD1D911534B20 = { isa = XCBuildConfiguration; buildSettings = {
+PRODUCT_NAME = "$(TARGET_NAME)";
+PRODUCT_BUNDLE_IDENTIFIER = "ru.shelf.ios";
+GENERATE_INFOPLIST_FILE = "YES";
+TARGETED_DEVICE_FAMILY = "1,2";
+CURRENT_PROJECT_VERSION = "1";
+MARKETING_VERSION = "0.1";
+CODE_SIGN_STYLE = "Automatic";
+SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+INFOPLIST_FILE = "Shelf/Info.plist";
+INFOPLIST_KEY_UILaunchScreen_Generation = "YES";
+INFOPLIST_KEY_UIApplicationSceneManifest_Generation = "YES";
+INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+INFOPLIST_KEY_CFBundleDisplayName = "Shelf";
+}; name = Debug; };
+5D9C4586BE060BB812C5EDEE = { isa = XCBuildConfiguration; buildSettings = {
+PRODUCT_NAME = "$(TARGET_NAME)";
+PRODUCT_BUNDLE_IDENTIFIER = "ru.shelf.ios";
+GENERATE_INFOPLIST_FILE = "YES";
+TARGETED_DEVICE_FAMILY = "1,2";
+CURRENT_PROJECT_VERSION = "1";
+MARKETING_VERSION = "0.1";
+CODE_SIGN_STYLE = "Automatic";
+SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+INFOPLIST_FILE = "Shelf/Info.plist";
+INFOPLIST_KEY_UILaunchScreen_Generation = "YES";
+INFOPLIST_KEY_UIApplicationSceneManifest_Generation = "YES";
+INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+INFOPLIST_KEY_CFBundleDisplayName = "Shelf";
+}; name = Release; };
+6068F032FF22A279217D11E0 = { isa = XCConfigurationList; buildConfigurations = (9D0179852D9FD1D911534B20, 5D9C4586BE060BB812C5EDEE, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+4C715286C9EE0108E3D766C8 = { isa = XCBuildConfiguration; buildSettings = {
+PRODUCT_NAME = "$(TARGET_NAME)";
+PRODUCT_BUNDLE_IDENTIFIER = "ru.shelf.ios.uitests";
+GENERATE_INFOPLIST_FILE = "YES";
+TARGETED_DEVICE_FAMILY = "1,2";
+CURRENT_PROJECT_VERSION = "1";
+MARKETING_VERSION = "0.1";
+CODE_SIGN_STYLE = "Automatic";
+SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+TEST_TARGET_NAME = "Shelf";
+}; name = Debug; };
+63FF66BAB4E66B4316D44C6E = { isa = XCBuildConfiguration; buildSettings = {
+PRODUCT_NAME = "$(TARGET_NAME)";
+PRODUCT_BUNDLE_IDENTIFIER = "ru.shelf.ios.uitests";
+GENERATE_INFOPLIST_FILE = "YES";
+TARGETED_DEVICE_FAMILY = "1,2";
+CURRENT_PROJECT_VERSION = "1";
+MARKETING_VERSION = "0.1";
+CODE_SIGN_STYLE = "Automatic";
+SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+TEST_TARGET_NAME = "Shelf";
+}; name = Release; };
+0D4FF3C23CDECA81B2D7537C = { isa = XCConfigurationList; buildConfigurations = (4C715286C9EE0108E3D766C8, 63FF66BAB4E66B4316D44C6E, ); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+98F54143AB4E86B28C3AFEE0 = { isa = PBXProject; attributes = {BuildIndependentTargetsInParallel = YES; LastUpgradeCheck = 1600;}; buildConfigurationList = 49EA05A46B1A86EA7E413B43; compatibilityVersion = "Xcode 14.0"; developmentRegion = ru; hasScannedForEncodings = 0; knownRegions = (ru, en, Base,); mainGroup = DC76E9F0C0006E8F919E0C51; productRefGroup = FE0A091FDBFB3E9C31B7A1BD; projectDirPath = ""; projectRoot = ""; targets = (1BF5EAA62F3641BD99BCBF9F, 0AE9DE60202FD76E596337CB, ); };
+}; rootObject = 98F54143AB4E86B28C3AFEE0;
+}
