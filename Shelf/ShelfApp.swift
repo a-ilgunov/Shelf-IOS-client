@@ -4,7 +4,7 @@ import SwiftUI
 struct ShelfApp: App {
     var body: some Scene {
         WindowGroup {
-            Text("Shelf").preferredColorScheme(.light)
+            ShelfTabs().preferredColorScheme(.light)
         }
     }
 }
