@@ -51,7 +51,12 @@ struct ProfileView<Actions: View>: View {
                         }
                     }
                     divider
-                    sectionHeading("Сообщества", count: profile.communities.total)
+                    Button {
+                        flow.show(.communities(userID: profile.id, isOwner: isOwner))
+                    } label: {
+                        sectionHeading("Сообщества", count: profile.communities.total)
+                            .contentShape(Rectangle())
+                    }.buttonStyle(.plain)
                     VStack(alignment: .leading, spacing: 12) {
                         ForEach(Array(profile.communities.preview.enumerated()), id: \.element.id) { index, community in
                             CommunityRow(community: community, index: index)
