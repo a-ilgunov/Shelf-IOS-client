@@ -73,6 +73,7 @@ private struct ShelfTabController: UIViewControllerRepresentable {
 
 enum AuthPage: Equatable {
     case login, register, recover, changePassword, faq, resend, mailSent, sendError, verified, expired, profile
+    case guestProfile(id: String)
 }
 
 @MainActor
@@ -80,10 +81,19 @@ final class ProfileFlow: NSObject, ObservableObject, UIGestureRecognizerDelegate
     private weak var navigation: UINavigationController?
     private var pendingLink: AuthPage?
     let profiles: any ProfileService
+    var ownerID: String?
 
     init(profiles: any ProfileService) {
         self.profiles = profiles
         super.init()
+    }
+
+    func openProfile(id: String) {
+        if id == ownerID {
+            navigation?.popToRootViewController(animated: true)
+        } else {
+            show(.guestProfile(id: id))
+        }
     }
 
     func attach(_ nav: UINavigationController) {
@@ -118,7 +128,14 @@ final class ProfileFlow: NSObject, ObservableObject, UIGestureRecognizerDelegate
         }
     }
 
+    func selectTab(_ tab: ShelfTab) {
+        guard let tabs = navigation?.tabBarController,
+              let index = ShelfTab.allCases.firstIndex(of: tab) else { return }
+        tabs.selectedIndex = index
+    }
+
     func signIn() {
+        ownerID = nil
         navigation?.view.endEditing(true)
         navigation?.setViewControllers([controller(.profile)], animated: true)
     }
@@ -145,7 +162,10 @@ final class ProfileFlow: NSObject, ObservableObject, UIGestureRecognizerDelegate
     private func controller(_ page: AuthPage) -> UIViewController {
         let host = UIHostingController(rootView: AccountPage(page: page, flow: self,
             fromFAQ: navigation?.topViewController?.restorationIdentifier == String(describing: AuthPage.faq)))
-        host.hidesBottomBarWhenPushed = ![.login, .register, .profile].contains(page)
+        switch page {
+        case .login, .register, .profile, .guestProfile: host.hidesBottomBarWhenPushed = false
+        default: host.hidesBottomBarWhenPushed = true
+        }
         host.view.backgroundColor = UIColor(Palette.paper)
         host.overrideUserInterfaceStyle = .light
         host.restorationIdentifier = String(describing: page)
@@ -164,7 +184,8 @@ private struct AccountPage: View {
             case .login, .register: AuthView(registering: page == .register, flow: flow)
             case .recover, .changePassword, .resend, .faq: HelpView(page: page, flow: flow, fromFAQ: fromFAQ)
             case .mailSent, .sendError, .verified, .expired: MailView(page: page, flow: flow)
-            case .profile: ProfileView(onLogout: flow.login)
+            case .profile: ProfilePage(flow: flow)
+            case .guestProfile(let id): ProfilePage(userID: id, flow: flow)
             }
         }
         .foregroundStyle(Palette.ink)
